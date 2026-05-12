@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext.jsx'
 
-export default function Login({ isAuthenticated, onLogin }) {
+export default function Login() {
+  const { isAuthenticated, login } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
@@ -14,7 +16,9 @@ export default function Login({ isAuthenticated, onLogin }) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    onLogin()
+    const data = new FormData(event.currentTarget)
+    const username = data.get('username') || 'Invitado'
+    login({ username })
     navigate(from, { replace: true })
   }
 
@@ -25,11 +29,11 @@ export default function Login({ isAuthenticated, onLogin }) {
       <form onSubmit={handleSubmit} className="form">
         <label>
           Usuario
-          <input type="text" name="username" placeholder="ej. user" />
+          <input type="text" name="username" placeholder="ej. user" required />
         </label>
         <label>
           Contraseña
-          <input type="password" name="password" placeholder="••••••" />
+          <input type="password" name="password" placeholder="••••••" required />
         </label>
         <button type="submit">Iniciar sesión</button>
       </form>

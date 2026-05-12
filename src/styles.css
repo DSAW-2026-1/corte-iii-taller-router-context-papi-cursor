@@ -99,3 +99,31 @@ button {
 button:hover {
   background: #1d4ed8;
 }
+
+.nav-user {
+  color: #93c5fd;
+  font-weight: 600;
+  padding: 0.5rem 0.85rem;
+}
+
+.user-info {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: #f1f5f9;
+  border-radius: 0.75rem;
+  border-left: 4px solid #2563eb;
+}
+
+.user-info h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.user-info pre {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #1e40af;
+}
